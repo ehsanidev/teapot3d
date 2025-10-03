@@ -18,7 +18,7 @@ const axesHelper = new THREE.AxesHelper(10, 10)
 scene.add(axesHelper)
 
 const gltfloader = new GLTFLoader();
-gltfloader.load('/src/model/scene.glb',
+gltfloader.load('/model/scene.glb',
     (gltf) => {
         console.log('gltf>>>', gltf)
         gltf.scene.scale.set(1, 1, 1)
@@ -49,7 +49,7 @@ scene.add(camera)
 
 
 const hdrLoader = new RGBELoader()
-hdrLoader.load('/src/model/small_empty_room_2_4k.hdr',
+hdrLoader.load('/model/small_empty_room_2_4k.hdr',
     (hdr) => {
         hdr.mapping = THREE.EquirectangularReflectionMapping
         scene.environment = hdr

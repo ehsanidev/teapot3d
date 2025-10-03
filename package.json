@@ -4,14 +4,16 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "deploy": "vercel --prod"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "three": "^0.179.1"
+    "three": "^0.179.1",
+    "vercel": "^48.2.0"
   },
   "devDependencies": {
     "vite": "^7.0.6"
