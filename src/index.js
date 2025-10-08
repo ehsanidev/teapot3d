@@ -13,7 +13,7 @@ const scene = new THREE.Scene()
 scene.background = new THREE.Color(0xffafcc)
 
 const gltfloader = new GLTFLoader();
-gltfloader.load('/assets/scene.gltf',
+gltfloader.load('models/scene.gltf',
     (gltf) => {
         console.log('gltf>>>', gltf)
         gltf.scene.scale.set(1, 1, 1)
