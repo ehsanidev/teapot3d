@@ -1,24 +1,19 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 
 console.log('Three.js>>', THREE)
 
 const myCanvas = document.querySelector("canvas.threeD")
 const sizes = {
-    width: 900,
-    height: 500
+    width: 390, height: 590
 }
 
 const scene = new THREE.Scene()
-scene.background = new THREE.Color(0xf4f2f5)
-
-const axesHelper = new THREE.AxesHelper(10, 10)
-scene.add(axesHelper)
+scene.background = new THREE.Color(0xffafcc)
 
 const gltfloader = new GLTFLoader();
-gltfloader.load('/model/scene.glb',
+gltfloader.load('/assets/scene.gltf',
     (gltf) => {
         console.log('gltf>>>', gltf)
         gltf.scene.scale.set(1, 1, 1)
@@ -36,26 +31,13 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1)
 scene.add(ambientLight)
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
-directionalLight.position.set(-5.341, 8.684, 3.525)
+directionalLight.position.set(5.341, 5.684, 3.525)
 scene.add(directionalLight)
 
-const spotLight = new THREE.SpotLight(0xffffff, 1)
-spotLight.position.set(-1.805, 8.476, 9.747)
-scene.add(spotLight)
-
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000)
-camera.position.set(-3,2,5)
+const camera = new THREE.PerspectiveCamera(80, sizes.width / sizes.height, 0.1, 1000)
+camera.position.set(-100,250,400)
 scene.add(camera)
 
-
-const hdrLoader = new RGBELoader()
-hdrLoader.load('/model/small_empty_room_2_4k.hdr',
-    (hdr) => {
-        hdr.mapping = THREE.EquirectangularReflectionMapping
-        scene.environment = hdr
-        // scene.background=hdr
-    }
-)
 
 const render = new THREE.WebGLRenderer({
     canvas: myCanvas,
@@ -64,10 +46,10 @@ const render = new THREE.WebGLRenderer({
 
 const controls = new OrbitControls(camera, render.domElement)
 // controls.autoRotate=true
-// controls.addEventListener('change',()=>{
-// console.log('position', camera.position)
+controls.addEventListener('change',()=>{
+console.log('position', camera.position)
 // console.log('rotation', camera.rotation)
-// })
+})
 
 
 render.setSize(sizes.width, sizes.height)

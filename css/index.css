@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-items: center;
+    background-color: #023e8a;
+    font-family: monospace;
+}
+h1{
+    font-size: 52px;
+    color: #ffc8dd;
+}
